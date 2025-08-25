@@ -1,2 +1,3 @@
 # D121231009_MOBILE2025-W1
-Hari Pertama Mobile
+Novi Yuliyanti
+D121231009
