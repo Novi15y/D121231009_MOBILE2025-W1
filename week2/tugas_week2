@@ -1,0 +1,71 @@
+import 'dart:io';
+int fibonacci(int n) {
+  if (n < 0) throw ArgumentError("N harus >= 0");
+  if (n == 0) return 0;
+  if (n == 1) return 1;
+
+  int a = 0, b = 1, result = 0;
+  for (int i = 2; i <= n; i++) {
+    result = a + b;
+    a = b;
+    b = result;
+  }
+  return result;
+}
+
+int faktorial(int n) {
+  if (n < 0) throw ArgumentError("N harus >= 0");
+  int result = 1;
+  for (int i = 1; i <= n; i++) {
+    result *= i;
+  }
+  return result;
+}
+
+String toBinary(int n) {
+  if (n < 0) throw ArgumentError("N harus >= 0");
+  return n.toRadixString(2);
+}
+
+void main() {
+  bool lanjut = true;
+
+  while (lanjut) {
+    print("\n=== Program Week 2 ===");
+    print("1. Hitung Fibonacci");
+    print("2. Hitung Faktorial");
+    print("3. Konversi ke Biner");
+    stdout.write("Pilih menu (1/2/3): ");
+    String? pilihan = stdin.readLineSync();
+
+    switch (pilihan) {
+      case '1':
+        stdout.write("Masukkan N untuk Fibonacci: ");
+        int n = int.parse(stdin.readLineSync()!);
+        print("Fibonacci ke-$n = ${fibonacci(n)}");
+        break;
+
+      case '2':
+        stdout.write("Masukkan N untuk Faktorial: ");
+        int n = int.parse(stdin.readLineSync()!);
+        print("Faktorial dari $n = ${faktorial(n)}");
+        break;
+
+      case '3':
+        stdout.write("Masukkan bilangan untuk konversi ke biner: ");
+        int n = int.parse(stdin.readLineSync()!);
+        print("Biner dari $n = ${toBinary(n)}");
+        break;
+
+      default:
+        print("Pilihan tidak valid!");
+    }
+
+    stdout.write("\nApakah ingin lanjut? (y/n): ");
+    String? lagi = stdin.readLineSync();
+    if (lagi == null || lagi.toLowerCase() != 'y') {
+      lanjut = false;
+      print("Terima kasih yahhh, program udah selesai.");
+    }
+  }
+}
